@@ -17,7 +17,7 @@ def retrieve_with_model(self, output_schema: Type[T], *args, **kwargs) -> T:
         fields = [
             (
                 name,
-                field["type"],
+                field.get("type", "unknown"),  # Use "unknown" if "type" is not present
                 field.get("description", "No description provided."),
                 field.get("examples", ["No example provided."])[0],
             )
@@ -35,7 +35,9 @@ def retrieve_with_model(self, output_schema: Type[T], *args, **kwargs) -> T:
         except ValidationError as e:
             raise ValidationError() from e
 
-    raise NotImplementedError("You cannot use 'retrieve_with_model' without specifying schema! Use 'retrieve' instead.")
+    raise NotImplementedError(
+        "You cannot use 'retrieve_with_model' without specifying schema! Use 'retrieve' instead."
+    )
 
 
 # Attach the method to the MultiOn class
