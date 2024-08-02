@@ -17,7 +17,9 @@ def retrieve_with_model(self, output_schema: Type[T], *args, **kwargs) -> T:
         fields = [
             (
                 name,
-                field.get("type", "unknown"),  # Use "unknown" if "type" is not present
+                field.get(
+                    "type", "unknown"
+                ),  # Use "unknown" if "type" is not present or it is Union, etc.
                 field.get("description", "No description provided."),
                 field.get("examples", ["No example provided."])[0],
             )
@@ -33,7 +35,7 @@ def retrieve_with_model(self, output_schema: Type[T], *args, **kwargs) -> T:
             validated_data = output_schema.model_validate(response.data[0])
             return output_schema(**validated_data.dict())
         except ValidationError as e:
-            raise ValidationError() from e
+            raise ValidationError(e.errors()) from e
 
     raise NotImplementedError(
         "You cannot use 'retrieve_with_model' without specifying schema! Use 'retrieve' instead."
