@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from .multion_pydantic import MultiOn, MultiOnPydantic
 
 
 app = FastAPI()
