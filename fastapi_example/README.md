@@ -66,13 +66,13 @@ This file defines the Pydantic models used for the queries and responses.
 1. Install the required dependencies:
 
    ```bash
-   pip install fastapi pydantic multion
+   poetry install
    ```
 
 2. Run the FastAPI application:
 
    ```bash
-   uvicorn fastapi_example.app:app --reload
+   poetry run uvicorn fastapi_example.app:app
    ```
 
 3. Access the API documentation at `http://127.0.0.1:8000/docs`.
