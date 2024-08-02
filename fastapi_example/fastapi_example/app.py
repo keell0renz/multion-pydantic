@@ -1,5 +1,5 @@
 """
-In this file we explore the toy usecase defined in https://www.reddit.com/r/webscraping/comments/m5hh4l/how_to_extract_product_data_from_hm_with_google/
+In this file we explore the usecase defined in https://www.reddit.com/r/webscraping/comments/m5hh4l/how_to_extract_product_data_from_hm_with_google/
 reddit post, which asks for a way to scrape H&M products.
 
 One of the benefits of pydantic-based query is that this query is defined in declarative way, and can be used to type return values
